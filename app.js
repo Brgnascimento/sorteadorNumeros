@@ -4,7 +4,6 @@ function sortear(){
     let quantidade = parseInt(document.getElementById('quantidade').value);
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
-    let diferença = ate - de;
     
     let sorteados = []; // Cria uma array dos números a serem passados no looping
     let numero; 
