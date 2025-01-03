@@ -10,8 +10,8 @@ function sortear(){
     let numero; 
 
     // inserir número na lista sorteados
-    if (quantidade>=diferença){
-        alert('Quantidade incompatível, por favor insira outro valor!')
+    if (de >= ate){
+        alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!')
     } else {
         for (let i=0; i<quantidade; i++){
             numero = gerarNumeroAleatorio(de,ate);
