@@ -1,6 +1,5 @@
 function sortear(){
-    
-    // Identifica o valor digitado pelo usuário
+// Identifica o valor digitado pelo usuário
     let quantidade = parseInt(document.getElementById('quantidade').value);
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
@@ -9,18 +8,25 @@ function sortear(){
     let numero; 
 
     // inserir número na lista sorteados
-    if (de >= ate){
-        alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!')
-    } else {
-        for (let i=0; i<quantidade; i++){
-            numero = gerarNumeroAleatorio(de,ate);
 
-            while (sorteados.includes(numero)){
-                numero = gerarNumeroAleatorio(de,ate) // Checa se o número já existe;    
+    if (quantidade > (ate - de + 1)) {
+        alert('Campo "Quantidade" deve ser menor ou igual ao intervalo informado no campo "Do número" até o campo "Até o número". Verifique!');
+        return;
+      } else {
+            if (de >= ate){
+                alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!')
+            } else {for (let i=0; i<quantidade; i++){
+                numero = gerarNumeroAleatorio(de,ate);
+
+                while (sorteados.includes(numero)){
+                    numero = gerarNumeroAleatorio(de,ate) // Checa se o número já existe;    
+                }
+                sorteados.push(numero)
+            
             }
-            sorteados.push(numero);
         }
     }
+
 
     let resultado = document.getElementById('resultado');
     resultado.innerHTML= `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>` // Altera o texto do resultado;
@@ -28,10 +34,8 @@ function sortear(){
     let botao = document.getElementById('btn-reiniciar')
     botao.classList.contains('container__botao-desabilitado')
     botao.classList.remove('container__botao-desabilitado');
-    botao.classList.add('container__botao'); 
-    // Altera status do botão de reinicio ao clicar em sortear
+    botao.classList.add('container__botao');  // Altera status do botão de reinicio ao clicar em sortear
 }
-
 
 function gerarNumeroAleatorio(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
