@@ -4,18 +4,23 @@ function sortear(){
     let quantidade = parseInt(document.getElementById('quantidade').value);
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
+    let diferença = ate - de;
     
     let sorteados = []; // Cria uma array dos números a serem passados no looping
     let numero; 
 
     // inserir número na lista sorteados
-    for (let i=0; i<quantidade; i++){
-        numero = gerarNumeroAleatorio(de,ate);
+    if (quantidade>=diferença){
+        alert('Quantidade incompatível, por favor insira outro valor!')
+    } else {
+        for (let i=0; i<quantidade; i++){
+            numero = gerarNumeroAleatorio(de,ate);
 
-        while (sorteados.includes(numero)){
-            numero = gerarNumeroAleatorio(de,ate) // Checa se o número já existe;    
+            while (sorteados.includes(numero)){
+                numero = gerarNumeroAleatorio(de,ate) // Checa se o número já existe;    
+            }
+            sorteados.push(numero);
         }
-        sorteados.push(numero);
     }
 
     let resultado = document.getElementById('resultado');
